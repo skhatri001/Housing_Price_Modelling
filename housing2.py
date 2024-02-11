@@ -27,7 +27,7 @@ total_payment = np.zeros((len(t_months)))
 #     loanAmount_Growth[i] += interest[i-1]
 
 ## Monthly Interest Rate and Loan Amount Growth
-extra_factor = 0.15
+extra_factor = 0.20
 payment = (interestRate_Month)*loanAmount*(1+extra_factor)
 
 #print(payment)
