@@ -66,5 +66,5 @@ plt.legend(loc='best',fontsize=34)
 plt.title(str(int(loanAmount_Growth[0]))+' Loan with ' + str(100*interestRate)+'%' + ' interest rate', fontsize=36)
 plt.show()
 
-
+## Do something 
 ## Add monthly payment
