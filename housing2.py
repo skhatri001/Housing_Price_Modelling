@@ -10,7 +10,7 @@ t = np.arange(0,n_years,1) # Time years
 
 house_1 = mortgage(homeValue,downPaymentFraction,interestRate)
 downPayment = house_1.calcDownPayment()#homeValue*downPaymentFraction
-loanAmount = homeValue - downPayment
+loanAmount = house_1.calcLoanAmount()#homeValue - downPayment
 t_months = np.arange(0,n_years*12)#t*12
 interestRate_Month = interestRate/12
 loanAmount_Growth=loanAmount*np.ones(len(t))
