@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from Mortgage import Mortgage
+
 homeValue = 1e6 # Home price in dollars
 downPaymentFraction = 0.20 # 
 interestRate = 0.06

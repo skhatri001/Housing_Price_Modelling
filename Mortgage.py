@@ -1,4 +1,4 @@
-class Mortgage:
+class mortgage:
 
     def __init__(self,home_cost,down_payment_fraction,interest_rate):
         self.home_cost = home_cost
