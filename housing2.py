@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 homeValue = 1e6 # Home price in dollars
 downPaymentFraction = 0.20 # 
-interestRate = 0.08
+interestRate = 0.06
 n_years = 30
 t = np.arange(0,n_years,1) # Time years
 
@@ -27,7 +27,7 @@ total_payment = np.zeros((len(t_months)))
 #     loanAmount_Growth[i] += interest[i-1]
 
 ## Monthly Interest Rate and Loan Amount Growth
-extra_factor = 0.20
+extra_factor = 0.10
 payment = (interestRate_Month)*loanAmount*(1+extra_factor)
 
 #print(payment)
@@ -36,12 +36,14 @@ for i in range(1,len(t_months)):
     interest_Month[i] = (interestRate_Month)*principle
     monthly_remainder = payment-interest_Month[i]
     if i//12 == 1:
-        payment *= 1.01
+        payment *= 1.03
+        print(payment)
     #print(monthly_remainder)
     if monthly_remainder>0:
         principle-=monthly_remainder
         total_payment[i] = payment
     if principle<=0:
+        principle=0
         break
     #net_Remaining[] = 
     #print(interest_Month[i])
@@ -52,11 +54,11 @@ for i in range(1,len(t_months)):
 # plt.plot(t,(loanAmount_Growth-loanAmount_Growth[0])/1e6,marker='o',color='r',markersize=10,  label='Interest Growth')
 
 #plt.plot(t_months/12,interest_Month,marker='o',color='b',markersize=10, label='Total Amount Remaining')
-plt.plot(t_months[1:]/12,np.cumsum(total_payment)[1:],marker='o',color='r',markersize=10,  label='Interest, Final Monthly Payment is $'+str(round(payment,1)) + ', '+str(int(extra_factor*100))+'%')
+plt.plot(t_months[1:]/12,np.cumsum(total_payment)[1:]/1e6,marker='o',color='r',markersize=10,  label='Interest, Final Monthly Payment is $'+str(round(payment,1)) + ', '+str(int(extra_factor*100))+'%')
 
 
 plt.xlabel('Time (Years)',fontsize=40)
-plt.ylabel('Percentage of Mortgage Payment ($)',fontsize=40)
+plt.ylabel('Total Amount Paid Toward Mortgage ($M)',fontsize=40)
 plt.xticks(fontsize=30)
 plt.yticks(fontsize=30)
 plt.axhline(y=0, c='k')
