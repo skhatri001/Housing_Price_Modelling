@@ -2,23 +2,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Mortgage import mortgage
 
+### Input Parameters
 homeValue = 1e6 # Home price in dollars
 downPaymentFraction = 0.25 # 
 interestRate = 0.06
+interestRate_Month = interestRate/12
 n_years = 30
 monthly_extra_factor = 0.10
 annual_increase = 1.03
-t = np.arange(0,n_years,1) # Time years
+###
 
 house_1 = mortgage(homeValue,downPaymentFraction,interestRate)
 downPayment = house_1.calcDownPayment()#homeValue*downPaymentFraction
 loanAmount = house_1.calcLoanAmount()#homeValue - downPayment
-
+t = np.arange(0,n_years,1) # Time years
 t_months = np.arange(0,n_years*12)#t*12
-interestRate_Month = interestRate/12
 loanAmount_Growth=loanAmount*np.ones(len(t))
 loanAmount_Growth_Month=loanAmount*np.ones(len(t_months))
-
 interest = np.zeros(len(t))
 interest_Month = np.zeros(len(t_months))
 net_Remaining = np.zeros((len(t_months)))
