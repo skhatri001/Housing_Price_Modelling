@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from Mortgage import mortgage
+import PySimpleGUI as sg
 
 ### Input Parameters
 homeValue = 1e6 # Home price in dollars
