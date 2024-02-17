@@ -45,7 +45,7 @@ for i in range(1,len(t_months)):
     interest_Month[i] = (interestRate_Month)*principle
 
     monthly_remainder = payment-interest_Month[i]-monthly_property_tax_payment
-    print(monthly_remainder)
+    #print(monthly_remainder)
     if i//12 == 1:
         payment *= annual_increase
         #print(payment)
@@ -74,6 +74,8 @@ plt.ylabel('Mortgage Payment ($M)',fontsize=40)
 plt.xticks(fontsize=30)
 plt.yticks(fontsize=30)
 plt.axhline(y=0, c='k')
+plt.axvline(x=t_months[np.min(np.argwhere(np.diff(total_payment[1:]<=0.1)))]/12, label=str(round(t_months[np.min(np.argwhere(np.diff(total_payment[1:]<=0.1)))]/12, 1)) + ' years')
+#print(np.argwhere(np.diff(total_payment[1:]<=0.1)))
 # plt.axhline(y=2*homeValue/1e6, c='k')
 # plt.axhline(y=3*homeValue/1e6, c='k')
 plt.legend(loc='best',fontsize=24)
