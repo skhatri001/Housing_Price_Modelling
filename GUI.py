@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-
+import Mortgage as mg
 """
     For Reddit - Input a value, then enter another 3 more into same input box. Store in a list
 """
@@ -17,6 +17,11 @@ layout = [  [sg.Text('Mortgage Calculator', font='Any 24')],
 
 window = sg.Window('Mortgage Calculator', layout,size=(400,400),resizable=True,element_justification='center')
 
+output_text = ['Monthly Payment', 'Years to Pay Off Mortgage']
+layout2 = [ [sg.Text('')]
+
+]
+
 counter = 0
 stuff_entered = []
 while True:             # Event Loop
@@ -27,11 +32,16 @@ while True:             # Event Loop
     if event == 'Enter':
         #print(values.keys())
         homeValue = values[layout_text[0]]
-        downPayment = values[layout_text[1]]
+        downPayment_Percentage = values[layout_text[1]]
         annualInterestRate = values[layout_text[2]]
         loanTerm = values[layout_text[3]]
         n_years = values[layout_text[4]]
         annual_property_tax = values[layout_text[5]]
+        # This bit is using the Mortgage class to compute the following quantities
+        house_1 = mg(homeValue,downPayment_Percentage/100,annualInterestRate)
+        downPayment = house_1.calcDownPayment()#homeValue*downPaymentFraction
+        principle = house_1.calcLoanAmount()#homeValue - downPayment
+        monthlyInterestRate.calcMonthly
         #monthly_payment = 
         print(homeValue)
         stuff_entered.append(values.values())
